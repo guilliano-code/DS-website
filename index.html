@@ -33,6 +33,10 @@
     @keyframes blobA { 0%,100%{transform:translate(0,0)} 50%{transform:translate(40px,-30px)} }
     @keyframes blobB { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-35px,25px)} }
     @keyframes blobC { 0%,100%{transform:translate(0,0)} 50%{transform:translate(20px,40px)} }
+    @keyframes dotPulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(245,173,5,.55); }
+      50%      { box-shadow: 0 0 0 5px rgba(245,173,5,0); }
+    }
 
     /* ── Fade-in from top (slide DOWN) ────────────── */
     .fade-section {
@@ -92,9 +96,10 @@
     }
     .hover-btn:hover { border-color: rgba(28,28,26,.4); }
     .hover-btn__dot {
-      width: 8px; height: 8px; border-radius: 50%; background: var(--ink);
+      width: 8px; height: 8px; border-radius: 50%; background: var(--gold);
       flex-shrink: 0; transition: transform 0.5s ease; transform-origin: center;
       position: relative; z-index: 0;
+      animation: dotPulse 2s ease-in-out infinite;
     }
     .hover-btn:hover .hover-btn__dot { transform: scale(42); }
     .hover-btn__label { position: relative; z-index: 1; transition: transform 0.5s ease, opacity 0.5s ease; }
@@ -155,9 +160,13 @@
       display: flex; align-items: center; justify-content: center;
     }
     .cta-pill__sep { height: 1px; background: rgba(0,0,0,.07); }
-    .cta-pill__icons { background: #fff; padding: 8px 20px 9px; display: flex; align-items: center; gap: 10px; }
-    .pi-slot { width: 18px; height: 18px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: opacity 0.45s ease; }
+    .cta-pill__icons { background: #fff; padding: 8px 20px 9px; display: flex; align-items: center; gap: 9px; }
+    @keyframes piOut { from { opacity: 1; } to { opacity: 0; } }
+    @keyframes piIn  { from { opacity: 0; } to { opacity: 1; } }
+    .pi-slot { width: 18px; height: 18px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
     .pi-slot svg { width: 18px; height: 18px; display: block; }
+    .pi-out { animation: piOut 0.4s ease forwards; }
+    .pi-in  { animation: piIn  0.4s ease forwards; }
 
     /* ══════════════════════════════════════════════
        CARDS — Light Apple aesthetic
@@ -281,12 +290,29 @@
       border: none; border-radius: 10px; cursor: pointer; transition: background .2s;
     }
     .submit-btn:hover { background: #1A1A1A; }
-    .contact-email {
-      font-family: 'Poppins', sans-serif; font-weight: 400;
-      font-size: 14px; color: rgba(28,28,26,.72); text-decoration: none; transition: color .2s;
+    .contact-response { font-family: 'Poppins', sans-serif; font-weight: 400; font-size: 12px; color: rgba(28,28,26,.44); margin-top: 6px; }
+
+    /* Email copy-to-clipboard */
+    .email-copy-wrap {
+      display: inline-block; position: relative;
+      cursor: pointer; overflow: hidden; height: 1.45em; vertical-align: top;
+      outline: none;
     }
-    .contact-email:hover { color: var(--ink); }
-    .contact-response { font-family: 'Poppins', sans-serif; font-weight: 400; font-size: 12px; color: rgba(28,28,26,.55); margin-top: 6px; }
+    .email-label, .copied-label {
+      display: flex; align-items: center; gap: 5px;
+      font-family: 'Poppins', sans-serif; font-weight: 400; font-size: 14px;
+      white-space: nowrap; line-height: 1.45;
+      transition: transform 0.35s ease, opacity 0.35s ease;
+    }
+    .email-label { color: rgba(28,28,26,.72); }
+    .email-label:hover { color: var(--ink); }
+    .copied-label {
+      position: absolute; top: 0; left: 0;
+      color: #16a34a;
+      transform: translateY(110%); opacity: 0;
+    }
+    .email-copy-wrap.copied .email-label  { transform: translateY(-110%); opacity: 0; }
+    .email-copy-wrap.copied .copied-label { transform: translateY(0);     opacity: 0.9; }
 
     /* ══════════════════════════════════════════════
        FOOTER
@@ -309,9 +335,9 @@
     ══════════════════════════════════════════════ */
     @media (max-width: 640px) {
       .hero, .section-wrap, .cards-section,
-      .ftree-section { padding-left: 1rem; padding-right: 1rem; }
-      footer { padding-left: 1rem; padding-right: 1rem; }
-      .contact-inner { padding-left: 1rem; padding-right: 1rem; }
+      .ftree-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+      footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .contact-inner { padding-left: 1.5rem; padding-right: 1.5rem; }
       .cta-pill-wrap { width: 100%; }
       /* Cards: full width, single column */
       .cards-grid { grid-template-columns: 1fr; gap: 0.85rem; }
@@ -478,7 +504,16 @@
           </div>
         </form>
         <div class="fade-section" data-delay="320" style="padding-top:1.5rem;border-top:1px solid rgba(0,0,0,.06);">
-          <a href="mailto:contact@dailyshotsmedia.com" class="contact-email">contact@dailyshotsmedia.com</a>
+          <div class="email-copy-wrap" id="emailCopyWrap" role="button" tabindex="0" aria-label="Copy email address">
+            <span class="email-label">
+              contact@dailyshotsmedia.com
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:.4;flex-shrink:0"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+            </span>
+            <span class="copied-label">
+              Copied
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+          </div>
           <p class="contact-response">Usually responds within 24 hours</p>
         </div>
       </div>
@@ -554,49 +589,59 @@
   (function initIcons() {
     const slots = ['pi0','pi1','pi2','pi3'].map(id => document.getElementById(id));
     if (!slots[0]) return;
-    // track which icon index is in each slot
     let assigned = [0, 1, 2, 3];
     slots.forEach((s, i) => { s.innerHTML = ICON_SVGS[i]; });
 
-    function swapNow() {
-      // pick 1 or 2 random slots (never the same slot twice)
-      const n = Math.random() < 0.45 ? 2 : 1;
-      const order = [0,1,2,3].sort(() => Math.random() - 0.5);
-      const toSwap = order.slice(0, n);
+    const animating = new Set();
 
-      // collect indices currently shown (so we never repeat)
+    function swapSlot(si, newIdx) {
+      if (animating.has(si)) return;
+      animating.add(si);
+      const s = slots[si];
+
+      // reset any lingering animation, then trigger fade-out
+      s.classList.remove('pi-in', 'pi-out');
+      void s.offsetWidth;
+      s.classList.add('pi-out');
+
+      setTimeout(() => {
+        assigned[si] = newIdx;
+        s.innerHTML = ICON_SVGS[newIdx];
+        s.classList.remove('pi-out');
+        requestAnimationFrame(() => {
+          s.classList.add('pi-in');
+          setTimeout(() => animating.delete(si), 450);
+        });
+      }, 400);
+    }
+
+    function swapNow() {
       const shown = new Set(assigned);
-      // build pool of icons NOT currently shown
-      let pool = Array.from({length: ICON_SVGS.length}, (_, i) => i)
+      const pool = Array.from({length: ICON_SVGS.length}, (_, i) => i)
         .filter(i => !shown.has(i))
         .sort(() => Math.random() - 0.5);
 
+      // shuffle slots, pick 1 always; add a non-adjacent second slot 40% of the time
+      const order = [0,1,2,3].sort(() => Math.random() - 0.5);
+      const toSwap = [order[0]];
+      if (pool.length >= 2 && Math.random() < 0.40) {
+        for (let i = 1; i < order.length; i++) {
+          if (Math.abs(order[i] - toSwap[0]) > 1) { toSwap.push(order[i]); break; }
+        }
+      }
+
       toSwap.forEach((si, idx) => {
         if (idx >= pool.length) return;
-        const newIdx = pool[idx];
-        const s = slots[si];
-        // rAF ensures the browser commits current state before starting fade-out
-        requestAnimationFrame(() => {
-          s.style.opacity = '0';
-          setTimeout(() => {
-            assigned[si] = newIdx;
-            s.innerHTML = ICON_SVGS[newIdx];
-            // double-rAF: first frame registers new DOM, second triggers the transition
-            requestAnimationFrame(() => {
-              requestAnimationFrame(() => {
-                s.style.opacity = '1';
-              });
-            });
-          }, 450);
-        });
+        swapSlot(si, pool[idx]);
       });
 
-      // slower on mobile to prevent overlap (transition is 600ms total)
+      // 10% slower than before on both mobile and desktop
       const interval = window.innerWidth < 640
-        ? 1000 + Math.random() * 600
-        : 350 + Math.random() * 350;
+        ? 1200 + Math.random() * 700
+        : 420 + Math.random() * 430;
       setTimeout(swapNow, interval);
     }
+
     setTimeout(swapNow, 800);
   })();
 
@@ -809,6 +854,47 @@
         btn.disabled = false;
         txt.textContent = 'Send';
       });
+    });
+  })();
+
+
+  /* ════════════════════════════════════════════════
+     EMAIL COPY — clipboard with slide animation
+  ════════════════════════════════════════════════ */
+  (function () {
+    var wrap = document.getElementById('emailCopyWrap');
+    if (!wrap) return;
+    var cooldown = false;
+
+    function doCopy() {
+      if (cooldown) return;
+      cooldown = true;
+
+      function showCopied() {
+        wrap.classList.add('copied');
+        setTimeout(function () {
+          wrap.classList.remove('copied');
+          setTimeout(function () { cooldown = false; }, 400);
+        }, 3000);
+      }
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText('contact@dailyshotsmedia.com').then(showCopied).catch(showCopied);
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = 'contact@dailyshotsmedia.com';
+        ta.style.cssText = 'position:fixed;opacity:0;pointer-events:none;';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); } catch(e) {}
+        document.body.removeChild(ta);
+        showCopied();
+      }
+    }
+
+    wrap.addEventListener('click', doCopy);
+    wrap.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); doCopy(); }
     });
   })();
   </script>
