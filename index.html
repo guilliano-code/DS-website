@@ -334,10 +334,12 @@
        RESPONSIVE
     ══════════════════════════════════════════════ */
     @media (max-width: 640px) {
-      .hero, .section-wrap, .cards-section,
+      .hero, .section-wrap,
       .ftree-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+      /* cards-section is nested inside section-wrap — zero its own padding so it doesn't double-pad */
+      .cards-section { padding-left: 0; padding-right: 0; }
       footer { padding-left: 1.5rem; padding-right: 1.5rem; }
-      .contact-inner { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .contact-inner { padding-left: 2.5rem; padding-right: 2.5rem; }
       .cta-pill-wrap { width: 100%; }
       /* Cards: full width, single column */
       .cards-grid { grid-template-columns: 1fr; gap: 0.85rem; }
