@@ -575,13 +575,20 @@
         if (idx >= pool.length) return;
         const newIdx = pool[idx];
         const s = slots[si];
-        s.style.opacity = '0';
-        setTimeout(() => {
-          assigned[si] = newIdx;
-          s.innerHTML = ICON_SVGS[newIdx];
-          void s.offsetWidth; // force reflow so mobile browsers trigger the transition
-          s.style.opacity = '1';
-        }, 300);
+        // rAF ensures the browser commits current state before starting fade-out
+        requestAnimationFrame(() => {
+          s.style.opacity = '0';
+          setTimeout(() => {
+            assigned[si] = newIdx;
+            s.innerHTML = ICON_SVGS[newIdx];
+            // double-rAF: first frame registers new DOM, second triggers the transition
+            requestAnimationFrame(() => {
+              requestAnimationFrame(() => {
+                s.style.opacity = '1';
+              });
+            });
+          }, 450);
+        });
       });
 
       // slower on mobile to prevent overlap (transition is 600ms total)
