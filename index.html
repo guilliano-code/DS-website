@@ -445,8 +445,8 @@
     <div class="section-wrap">
       <section class="ftree-section fade-section" data-delay="0">
         <div class="ftree-heading">
-          <h2 class="ftree-h2">What we offer</h2>
-          <p class="ftree-sub">A full look at our toolkit</p>
+          <h2 class="ftree-h2">The Dailyshotsmedia Stack</h2>
+          <p class="ftree-sub">Discover everything we do</p>
         </div>
         <div class="ftree-wrap">
           <div class="ftree">
@@ -663,7 +663,7 @@
       { name:"longform", type:"folder", children:[
         { name:"youtube-videos.mp4",  type:"file", ext:"mp4" },
       ]},
-      { name:"campaigns", type:"folder", children:[
+      { name:"campaigns", type:"folder", collapsed:true, children:[
         { name:"Q2-2026-strategy.md", type:"file", ext:"md"  },
         { name:"brand-shoot.pdf",     type:"file", ext:"pdf" },
         { name:"google-ads.md",       type:"file", ext:"md"  },
@@ -681,7 +681,7 @@
       { name:"performance-april.csv", type:"file", ext:"csv" },
       { name:"monthly-report.pdf",    type:"file", ext:"pdf" },
     ]},
-    { name:"brand", type:"folder", children:[
+    { name:"brand", type:"folder", collapsed:true, children:[
       { name:"logo.svg",              type:"file", ext:"svg" },
       { name:"guidelines.md",         type:"file", ext:"md"  },
       { name:"assets.png",            type:"file", ext:"png" },
@@ -730,8 +730,13 @@
         const childWrap = document.createElement('div');
         childWrap.className = 'ftree-children';
         const h = countAll(node) * 26;
-        childWrap.style.maxHeight = h + 'px';
         buildTree(node.children || [], childWrap, depth + 1);
+        if (node.collapsed) {
+          caret.classList.remove('open');
+          childWrap.classList.add('collapsed');
+        } else {
+          childWrap.style.maxHeight = h + 'px';
+        }
         container.appendChild(childWrap);
         item.addEventListener('click', () => {
           const open = caret.classList.contains('open');
