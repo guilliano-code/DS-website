@@ -125,7 +125,7 @@
        CTA PILL — 75% width, compact icon strip
     ══════════════════════════════════════════════ */
     .cta-pill-wrap { width: 75%; }
-    @media (max-width: 600px) { .cta-pill-wrap { width: 100%; } }
+    @media (max-width: 600px) { .cta-pill-wrap { width: 88%; } }
 
     .cta-pill {
       display: block; width: 100%;
@@ -583,8 +583,11 @@
         }, 300);
       });
 
-      // faster: 350–700ms between swaps
-      setTimeout(swapNow, 350 + Math.random() * 350);
+      // slower on mobile to prevent overlap (transition is 600ms total)
+      const interval = window.innerWidth < 640
+        ? 1000 + Math.random() * 600
+        : 350 + Math.random() * 350;
+      setTimeout(swapNow, interval);
     }
     setTimeout(swapNow, 800);
   })();
