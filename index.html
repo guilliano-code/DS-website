@@ -374,6 +374,7 @@
     .globe-section {
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       padding: 4rem 0 2rem;
+      transition: opacity 2.5s ease, transform 2.5s ease;
     }
     .globe {
       position: relative;
@@ -382,7 +383,7 @@
       background-image: url('https://pub-940ccf6255b54fa799a9b01050e6c227.r2.dev/globe.jpeg');
       background-size: cover;
       background-position: left center;
-      animation: earthRotate 60s linear infinite;
+      animation: earthRotate 30s linear infinite;
       box-shadow:
         0 0 20px rgba(255,255,255,.15),
         -5px 0 8px #c3f4ff inset,
