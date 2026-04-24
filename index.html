@@ -634,14 +634,21 @@
   /* ── Sticky nav — appears after file explorer ── */
   (function () {
     var nav     = document.getElementById('stickyNav');
-    var trigger = document.querySelector('.video-holder');
+    var trigger = document.querySelector('.hero .cta-create-btn');
     if (!nav || !trigger) return;
+    var showTimer = null;
     function onScroll() {
       var rect = trigger.getBoundingClientRect();
-      if (rect.top + rect.height * 0.5 < 0) {
-        nav.classList.add('visible');
-        nav.removeAttribute('aria-hidden');
+      if (rect.bottom < 0) {
+        if (!nav.classList.contains('visible') && !showTimer) {
+          showTimer = setTimeout(function () {
+            nav.classList.add('visible');
+            nav.removeAttribute('aria-hidden');
+            showTimer = null;
+          }, 220);
+        }
       } else {
+        if (showTimer) { clearTimeout(showTimer); showTimer = null; }
         nav.classList.remove('visible');
         nav.setAttribute('aria-hidden', 'true');
       }
