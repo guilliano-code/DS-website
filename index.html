@@ -297,18 +297,18 @@
     .cta-create-btn {
       display: inline-flex; align-items: center; gap: 8px;
       padding: 11px 28px; margin-bottom: 2.2rem;
-      background: linear-gradient(120deg, rgba(245,173,5,.10) 0%, rgba(12,11,9,0) 100%);
-      border: 1px solid rgba(245,173,5,.5);
+      background: #1C1A16;
+      border: 1px solid rgba(245,173,5,.45);
       color: var(--gold);
       font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 13px;
-      letter-spacing: .05em; border-radius: 10px; text-decoration: none;
-      transition: background .3s, border-color .3s, box-shadow .3s, transform .2s;
-      box-shadow: 0 0 18px rgba(245,173,5,.06);
+      letter-spacing: .05em; border-radius: 6px; text-decoration: none;
+      transition: border-color .25s, box-shadow .25s, transform .2s, background .25s;
+      box-shadow: inset 0 1px 0 rgba(245,173,5,.07), 0 2px 12px rgba(0,0,0,.35);
     }
     .cta-create-btn:hover {
-      background: linear-gradient(120deg, rgba(245,173,5,.18) 0%, rgba(245,173,5,.04) 100%);
-      border-color: rgba(245,173,5,.85);
-      box-shadow: 0 0 28px rgba(245,173,5,.18);
+      background: #221F18;
+      border-color: rgba(245,173,5,.8);
+      box-shadow: inset 0 1px 0 rgba(245,173,5,.12), 0 4px 20px rgba(245,173,5,.12);
       transform: translateY(-1px);
     }
 
@@ -634,7 +634,7 @@
   /* ── Sticky nav — appears after file explorer ── */
   (function () {
     var nav     = document.getElementById('stickyNav');
-    var trigger = document.querySelector('.ftree-section');
+    var trigger = document.querySelector('.video-holder');
     if (!nav || !trigger) return;
     function onScroll() {
       if (trigger.getBoundingClientRect().bottom < 0) {
