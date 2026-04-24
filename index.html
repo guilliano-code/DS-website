@@ -637,7 +637,8 @@
     var trigger = document.querySelector('.video-holder');
     if (!nav || !trigger) return;
     function onScroll() {
-      if (trigger.getBoundingClientRect().bottom < 0) {
+      var rect = trigger.getBoundingClientRect();
+      if (rect.top + rect.height * 0.5 < 0) {
         nav.classList.add('visible');
         nav.removeAttribute('aria-hidden');
       } else {
