@@ -631,20 +631,18 @@
   history.scrollRestoration = 'manual';
   window.scrollTo(0, 0);
 
-  /* ── Video: load after 3s, blur fade-in ──────── */
+  /* ── Video: load immediately, poster shown until ready ── */
   (function () {
     var video  = document.getElementById('heroVideo');
     var poster = document.getElementById('videoPoster');
     if (!video || !poster) return;
-    setTimeout(function () {
-      video.src = 'Brand_assets/loop-web.mp4';
-      video.load();
-      video.addEventListener('canplay', function () {
-        video.play().catch(function () {});
-        video.classList.add('loaded');
-        poster.classList.add('hidden');
-      }, { once: true });
-    }, 3000);
+    video.src = 'Brand_assets/loop-web.mp4';
+    video.load();
+    video.addEventListener('canplay', function () {
+      video.play().catch(function () {});
+      video.classList.add('loaded');
+      poster.classList.add('hidden');
+    }, { once: true });
   })();
 
   /* ── Sticky nav — appears after file explorer ── */
