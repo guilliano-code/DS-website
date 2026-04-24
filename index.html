@@ -333,22 +333,29 @@
     /* ══════════════════════════════════════════════
        RESPONSIVE
     ══════════════════════════════════════════════ */
-    /* ── CTA + vertical video section ──────────── */
-    .cta-video-section {
-      display: flex; flex-direction: column; align-items: center;
-      gap: 2.5rem; padding-bottom: 4rem;
-    }
+    /* ── CTA create button ──────────────────────── */
     .cta-create-btn {
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 15px 40px; background: var(--gold); color: #0C0B09;
-      font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 1rem;
-      letter-spacing: -.01em; border-radius: 9999px; text-decoration: none;
-      transition: background .2s, transform .2s, box-shadow .2s;
-      box-shadow: 0 4px 20px rgba(245,173,5,.25);
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 11px 28px; margin-bottom: 1.4rem;
+      background: linear-gradient(120deg, rgba(245,173,5,.10) 0%, rgba(12,11,9,0) 100%);
+      border: 1px solid rgba(245,173,5,.5);
+      color: var(--gold);
+      font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 13px;
+      letter-spacing: .05em; border-radius: 9999px; text-decoration: none;
+      transition: background .3s, border-color .3s, box-shadow .3s, transform .2s;
+      box-shadow: 0 0 18px rgba(245,173,5,.06);
     }
     .cta-create-btn:hover {
-      background: #e0a004; transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(245,173,5,.35);
+      background: linear-gradient(120deg, rgba(245,173,5,.18) 0%, rgba(245,173,5,.04) 100%);
+      border-color: rgba(245,173,5,.85);
+      box-shadow: 0 0 28px rgba(245,173,5,.18);
+      transform: translateY(-1px);
+    }
+
+    /* ── Vertical video section ─────────────────── */
+    .cta-video-section {
+      display: flex; flex-direction: column; align-items: center;
+      padding-bottom: 4rem;
     }
     .video-holder {
       width: 100%; max-width: 320px;
@@ -465,8 +472,13 @@
       <h1 class="headline fade-section" data-delay="80" data-i18n="headline">Your company's missing<br>a nervous system</h1>
       <p class="sub fade-section" data-delay="160" data-i18n="sub">Tell me what your company does — we'll show you how bold content can scale it</p>
 
+      <!-- CTA Create button -->
+      <div class="fade-section" data-delay="220">
+        <a href="#contact" class="cta-create-btn" data-i18n="ctaCreate">Let's create</a>
+      </div>
+
       <!-- CTA Pill — 75% width, send → WhatsApp -->
-      <div class="fade-section" data-delay="240">
+      <div class="fade-section" data-delay="300">
         <div class="cta-pill-wrap">
           <div class="cta-pill">
             <a href="sms:+31624283207?body=HI%2C%20I%20want%20to%20chat!" class="cta-pill__top">
@@ -489,10 +501,9 @@
     </section>
 
 
-    <!-- ══ CTA + VIDEO ═══════════════════════════════ -->
+    <!-- ══ VIDEO HOLDER ══════════════════════════════ -->
     <div class="section-wrap">
       <div class="cta-video-section fade-section" data-delay="0">
-        <a href="#contact" class="cta-create-btn" data-i18n="ctaCreate">Let's create</a>
         <div class="video-holder">
           <div class="video-placeholder-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#EDE8E2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
