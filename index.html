@@ -371,7 +371,16 @@
     .stats-grid {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
     }
-    @media (max-width: 640px) { .stats-grid { grid-template-columns: 1fr; gap: .85rem; } }
+    @media (max-width: 640px) {
+      .stats-grid {
+        grid-template-columns: repeat(3, 78vw);
+        overflow-x: auto; scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch; scrollbar-width: none;
+        padding-bottom: .5rem;
+      }
+      .stats-grid::-webkit-scrollbar { display: none; }
+      .stat-card { scroll-snap-align: center; }
+    }
     .stat-card {
       background: #141210;
       border: 1px solid rgba(237,232,226,.07);
