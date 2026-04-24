@@ -415,18 +415,22 @@
     .card-tabs { display: none; }
     @media (max-width: 640px) {
       .card-tabs {
-        display: flex; gap: 4px; margin-bottom: 1rem; justify-content: center;
-      }
-      .card-tab {
-        padding: 5px 16px; border-radius: 8px;
+        display: inline-flex; margin-bottom: 1rem;
+        background: rgba(237,232,226,.06);
         border: 1px solid rgba(237,232,226,.12);
-        background: none; color: rgba(237,232,226,.38);
-        font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 600;
-        cursor: pointer; transition: all .2s; text-align: center; outline: none;
+        border-radius: 8px; padding: 3px; gap: 0;
+        align-self: flex-start;
+      }
+      .cards-section { display: flex; flex-direction: column; align-items: center; }
+      .card-tab {
+        padding: 7px 22px; border-radius: 6px;
+        border: none;
+        background: none; color: rgba(237,232,226,.4);
+        font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600;
+        cursor: pointer; transition: background .18s, color .18s; outline: none;
       }
       .card-tab.active {
-        background: rgba(237,232,226,.08);
-        border-color: rgba(237,232,226,.22);
+        background: rgba(237,232,226,.14);
         color: var(--ink);
       }
       .cards-grid .card { display: none; }
