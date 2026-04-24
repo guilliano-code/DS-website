@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="theme-color" content="#0C0B09">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dailyshotsmedia</title>
   <link rel="icon" type="image/png" href="Brand_assets/Logo transparant.png">
@@ -11,7 +12,7 @@
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; background: #0C0B09; }
     body {
       background: #0C0B09;
       color: #EDE8E2;
@@ -433,16 +434,11 @@
 
       <!-- CTA Create button -->
       <div class="fade-section" data-delay="220">
-        <a href="#contact" class="cta-create-btn" data-i18n="ctaCreate">Let's create</a>
+        <a href="https://wa.me/31624283207" target="_blank" rel="noopener" class="cta-create-btn" data-i18n="ctaCreate">Let's create</a>
       </div>
 
-
-    </section>
-
-
-    <!-- ══ VIDEO HOLDER ══════════════════════════════ -->
-    <div class="section-wrap">
-      <div class="cta-video-section fade-section" data-delay="0">
+      <!-- Video holder — inside hero so it appears higher on mobile -->
+      <div class="cta-video-section fade-section" data-delay="280">
         <div class="video-holder">
           <div class="video-placeholder-icon">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#EDE8E2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
@@ -450,8 +446,28 @@
           <span class="video-placeholder-label">Video</span>
         </div>
       </div>
-    </div>
 
+    </section>
+
+    <!-- ══ FILE TREE ══════════════════════════════════ -->
+    <div class="section-wrap">
+      <section class="ftree-section fade-section" data-delay="0">
+        <div class="ftree-heading">
+          <h2 class="ftree-h2" data-i18n="ftreeSub">Discover everything we do</h2>
+        </div>
+        <div class="ftree-wrap">
+          <div class="ftree">
+            <div class="ftree-header">
+              <span class="ftree-dot ftree-dot-r"></span>
+              <span class="ftree-dot ftree-dot-y"></span>
+              <span class="ftree-dot ftree-dot-g"></span>
+              <span class="ftree-title">DailyShotsmedia</span>
+            </div>
+            <div class="ftree-body" id="ftree-root"></div>
+          </div>
+        </div>
+      </section>
+    </div>
     <!-- ══ CARDS — Light Apple style ═════════════════ -->
     <div class="section-wrap">
       <section class="cards-section fade-section" data-delay="0">
@@ -494,26 +510,7 @@
 
 
 
-    <!-- ══ FILE TREE — "What we offer" ═══════════════ -->
-    <div class="section-wrap">
-      <section class="ftree-section fade-section" data-delay="0">
-        <div class="ftree-heading">
-          <h2 class="ftree-h2">The Dailyshotsmedia Stack</h2>
-          <p class="ftree-sub" data-i18n="ftreeSub">Discover everything we do</p>
-        </div>
-        <div class="ftree-wrap">
-          <div class="ftree">
-            <div class="ftree-header">
-              <span class="ftree-dot ftree-dot-r"></span>
-              <span class="ftree-dot ftree-dot-y"></span>
-              <span class="ftree-dot ftree-dot-g"></span>
-              <span class="ftree-title">DailyShotsmedia</span>
-            </div>
-            <div class="ftree-body" id="ftree-root"></div>
-          </div>
-        </div>
-      </section>
-    </div>
+
 
 
     <!-- ══ CONTACT ════════════════════════════════════ -->
@@ -626,12 +623,12 @@
         { name:"linkedin-ads.md",     type:"file", ext:"md"  },
       ]},
     ]},
-    { name:"automation", type:"folder", children:[
+    { name:"automation", type:"folder", collapsed:true, children:[
       { name:"crm-workflows.json",    type:"file", ext:"json" },
       { name:"whatsapp-bot.ts",       type:"file", ext:"ts"   },
       { name:"lead-generation.ts",    type:"file", ext:"ts"   },
     ]},
-    { name:"analytics", type:"folder", children:[
+    { name:"analytics", type:"folder", collapsed:true, children:[
       { name:"performance-april.csv", type:"file", ext:"csv" },
       { name:"monthly-report.pdf",    type:"file", ext:"pdf" },
     ]},
@@ -640,12 +637,12 @@
       { name:"guidelines.md",         type:"file", ext:"md"  },
       { name:"assets.png",            type:"file", ext:"png" },
     ]},
-    { name:"webdesign", type:"folder", children:[
+    { name:"webdesign", type:"folder", collapsed:true, children:[
       { name:"landing-page.html",     type:"file", ext:"html" },
       { name:"brand-site.html",       type:"file", ext:"html" },
       { name:"ui-components.figma",   type:"file", ext:"figma"},
     ]},
-    { name:"funnels", type:"folder", children:[
+    { name:"funnels", type:"folder", collapsed:true, children:[
       { name:"lead-funnel.ts",        type:"file", ext:"ts"   },
       { name:"sales-page.html",       type:"file", ext:"html" },
       { name:"email-sequence.md",     type:"file", ext:"md"   },
