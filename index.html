@@ -296,11 +296,11 @@
     /* ── CTA create button ──────────────────────── */
     .cta-create-btn {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 11px 28px; margin-bottom: 1.4rem;
+      padding: 11px 28px; margin-bottom: 2.2rem;
       background: linear-gradient(120deg, rgba(245,173,5,.10) 0%, rgba(12,11,9,0) 100%);
       border: 1px solid rgba(245,173,5,.5);
       color: var(--gold);
-      font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 13px;
+      font-family: 'DM Sans', sans-serif; font-weight: 800; font-size: 13px;
       letter-spacing: .05em; border-radius: 9999px; text-decoration: none;
       transition: background .3s, border-color .3s, box-shadow .3s, transform .2s;
       box-shadow: 0 0 18px rgba(245,173,5,.06);
@@ -311,6 +311,28 @@
       box-shadow: 0 0 28px rgba(245,173,5,.18);
       transform: translateY(-1px);
     }
+
+    /* ── Sticky nav ─────────────────────────────── */
+    .sticky-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: rgba(12,11,9,.88);
+      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(237,232,226,.08);
+      transform: translateY(-100%);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .sticky-nav.visible { transform: translateY(0); }
+    .sticky-nav-inner {
+      max-width: 64rem; margin: 0 auto; padding: 11px 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .sticky-nav-brand {
+      display: flex; align-items: center; gap: 8px;
+      font-family: 'Poppins', sans-serif; font-weight: 700;
+      font-size: 13px; color: var(--ink);
+    }
+    .sticky-nav-brand img { height: 20px; opacity: .8; }
+    .sticky-nav .cta-create-btn { font-size: 12px; padding: 8px 20px; margin-bottom: 0; }
 
     /* ── Vertical video section ─────────────────── */
     .cta-video-section {
@@ -398,6 +420,16 @@
   </style>
 </head>
 <body>
+
+  <nav id="stickyNav" class="sticky-nav" aria-hidden="true">
+    <div class="sticky-nav-inner">
+      <div class="sticky-nav-brand">
+        <img src="Brand_assets/Logo transparant.png" alt="">
+        <span>Dailyshotsmedia</span>
+      </div>
+      <a href="https://wa.me/31624283207" target="_blank" rel="noopener" class="cta-create-btn" data-i18n="ctaCreate">Let's create</a>
+    </div>
+  </nav>
 
   <div class="blobs" aria-hidden="true">
     <div class="blob blob-a"></div>
@@ -599,6 +631,23 @@
   <script>
   history.scrollRestoration = 'manual';
   window.scrollTo(0, 0);
+
+  /* ── Sticky nav — appears after file explorer ── */
+  (function () {
+    var nav     = document.getElementById('stickyNav');
+    var trigger = document.querySelector('.ftree-section');
+    if (!nav || !trigger) return;
+    function onScroll() {
+      if (trigger.getBoundingClientRect().bottom < 0) {
+        nav.classList.add('visible');
+        nav.removeAttribute('aria-hidden');
+      } else {
+        nav.classList.remove('visible');
+        nav.setAttribute('aria-hidden', 'true');
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
 
 
 
