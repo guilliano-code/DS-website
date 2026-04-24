@@ -7,7 +7,7 @@
 
   <!-- Primary SEO -->
   <title>Dailyshotsmedia</title>
-  <meta name="description" content="Bold content. Smart systems. We create short-form video content and build automation that grows your business — from social media to WhatsApp bots and CRM workflows.">
+  <meta name="description" content="Bold content. Smart systems. We create short-form video content and build automation that grows your business, from social media to WhatsApp bots and CRM workflows.">
   <meta name="robots" content="index, follow">
   <meta name="author" content="Dailyshotsmedia">
   <meta name="keywords" content="short-form video, content marketing, social media, video production, automation, CRM workflows, WhatsApp automation, lead generation, TikTok, Instagram Reels">
@@ -18,7 +18,7 @@
   <meta property="og:site_name" content="Dailyshotsmedia">
   <meta property="og:url" content="https://dailyshotsmedia.com">
   <meta property="og:title" content="Dailyshotsmedia">
-  <meta property="og:description" content="Bold content. Smart systems. We create short-form video content and build automation that grows your business — from social media to WhatsApp bots and CRM workflows.">
+  <meta property="og:description" content="Bold content. Smart systems. We create short-form video content and build automation that grows your business, from social media to WhatsApp bots and CRM workflows.">
   <meta property="og:image" content="https://dailyshotsmedia.com/Brand_assets/Logo transparant.png">
   <meta property="og:locale" content="en_US">
   <meta property="og:locale:alternate" content="nl_NL">
@@ -410,13 +410,7 @@
       transition: opacity 0.6s ease;
     }
     .video-poster.hidden { opacity: 0; pointer-events: none; }
-    .video-play-icon {
-      position: absolute; inset: 0;
-      display: flex; align-items: center; justify-content: center;
-      opacity: 0; transition: opacity 0.25s ease; pointer-events: none;
-    }
-    .video-play-icon svg { filter: drop-shadow(0 2px 8px rgba(0,0,0,.6)); }
-    .video-holder.paused .video-play-icon { opacity: 1; }
+
 
     /* ── Mobile card tabs ───────────────────────── */
     .card-tabs { display: none; }
@@ -516,7 +510,7 @@
       </div>
 
       <h1 class="headline fade-section" data-delay="80" data-i18n="headline">Your company's missing<br>a nervous system</h1>
-      <p class="sub fade-section" data-delay="160" data-i18n="sub">Tell me what your company does — we'll show you how bold content can scale it</p>
+      <p class="sub fade-section" data-delay="160" data-i18n="sub">Tell me what your company does, we'll show you how bold content can scale it</p>
 
       <!-- CTA Create button -->
       <div class="fade-section" data-delay="220">
@@ -528,9 +522,7 @@
         <div class="video-holder" id="videoHolder">
           <img id="videoPoster" class="video-poster" src="Brand_assets/video-poster.jpg" alt="">
           <video id="heroVideo" loop muted playsinline preload="auto"></video>
-          <div class="video-play-icon">
-            <svg width="44" height="44" viewBox="0 0 24 24" fill="rgba(255,255,255,.9)" stroke="none"><circle cx="12" cy="12" r="12" fill="rgba(0,0,0,.35)"/><polygon points="10 8 17 12 10 16 10 8" fill="rgba(255,255,255,.95)"/></svg>
-          </div>
+
         </div>
       </div>
 
@@ -579,7 +571,7 @@
           <div class="card" id="card1">
             <div class="card-eyebrow" data-i18n="card2eyebrow">How We Do It</div>
             <h3 class="card-title" data-i18n="card2title">We start by listening. Then we explore.</h3>
-            <p class="card-text" data-i18n="card2text">We start by understanding your business — your goals, your challenges, your vision. Then we explore what's possible together. Whether it's content that converts or workflows that scale, we're here to figure out the right solution for you, not push what we think you need</p>
+            <p class="card-text" data-i18n="card2text">We start by understanding your business, your goals, your challenges, your vision. Then we explore what's possible together. Whether it's content that converts or workflows that scale, we're here to figure out the right solution for you, not push what we think you need</p>
             <div class="card-tags">
               <span class="card-tag">Strategy First</span>
               <span class="card-tag">Custom Fit</span>
@@ -703,15 +695,6 @@
       poster.classList.add('hidden');
     }, { once: true });
 
-    holder.addEventListener('click', function () {
-      if (video.paused) {
-        video.play().catch(function () {});
-        holder.classList.remove('paused');
-      } else {
-        video.pause();
-        holder.classList.add('paused');
-      }
-    });
   })();
 
   /* ── Sticky nav — appears after file explorer ── */
@@ -990,14 +973,14 @@
   var TRANSLATIONS = {
     en: {
       headline:        "Your company's missing<br>a nervous system",
-      sub:             "Tell me what your company does — we'll show you how bold content can scale it",
+      sub:             "Tell me what your company does, we'll show you how bold content can scale it",
       ctaLabel:        "Tell me about your brand…",
       card1eyebrow:    "What We Do",
       card1title:      "Content that works. Systems that scale.",
       card1text:       "We create stunning short-form video content and build automation systems that actually work. From social clips to full production shoots, we handle the creative side. On the backend, we set up CRM workflows, WhatsApp automations, and lead generation systems that save you time",
       card2eyebrow:    "How We Do It",
       card2title:      "We start by listening. Then we explore.",
-      card2text:       "We start by understanding your business — your goals, your challenges, your vision. Then we explore what’s possible together. Whether it’s content that converts or workflows that scale, we’re here to figure out the right solution for you, not push what we think you need",
+      card2text:       "We start by understanding your business, your goals, your challenges, your vision. Then we explore what’s possible together. Whether it’s content that converts or workflows that scale, we’re here to figure out the right solution for you, not push what we think you need",
       ftreeSub:        "Discover everything we do",
       contactH2:       "Prefer email? Tell us about your goals",
       contactSub:      "Share your vision. We’ll be straight with you about whether we’re the right fit to help you achieve it",
@@ -1014,14 +997,14 @@
     },
     nl: {
       headline:        "Jouw bedrijf mist<br>een zenuwstelsel",
-      sub:             "Vertel ons wat jouw bedrijf doet — wij laten zien hoe gedurfde content het kan laten groeien",
+      sub:             "Vertel ons wat jouw bedrijf doet, wij laten zien hoe gedurfde content het kan laten groeien",
       ctaLabel:        "Vertel ons over jouw merk…",
       card1eyebrow:    "Wat We Doen",
       card1title:      "Content die werkt. Systemen die schalen.",
-      card1text:       "We maken opvallende short-form videocontent en bouwen automatiseringssystemen die echt werken. Van social clips tot volledige productieshoots — wij verzorgen de creatieve kant. Op de achtergrond zetten we CRM-workflows, WhatsApp-automatiseringen en leadgeneratiesystemen op die jou tijd besparen",
+      card1text:       "We maken opvallende short-form videocontent en bouwen automatiseringssystemen die echt werken. Van social clips tot volledige productieshoots, wij verzorgen de creatieve kant. Op de achtergrond zetten we CRM-workflows, WhatsApp-automatiseringen en leadgeneratiesystemen op die jou tijd besparen",
       card2eyebrow:    "Hoe We Het Doen",
       card2title:      "We beginnen met luisteren. Dan verkennen we.",
-      card2text:       "We beginnen met het begrijpen van jouw bedrijf — jouw doelen, uitdagingen en visie. Dan verkennen we samen wat er mogelijk is. Of het nu gaat om content die converteert of workflows die schalen, wij zoeken de juiste oplossing voor jou — niet wat wij denken dat je nodig hebt",
+      card2text:       "We beginnen met het begrijpen van jouw bedrijf, jouw doelen, uitdagingen en visie. Dan verkennen we samen wat er mogelijk is. Of het nu gaat om content die converteert of workflows die schalen, wij zoeken de juiste oplossing voor jou, niet wat wij denken dat je nodig hebt",
       ftreeSub:        "Ontdek alles wat we doen",
       contactH2:       "Liever e-mailen? Vertel ons over jouw doelen",
       contactSub:      "Deel jouw visie. We zijn eerlijk over of wij de juiste match zijn om jou te helpen dit te bereiken",
