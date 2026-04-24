@@ -372,15 +372,23 @@
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
     }
     @media (max-width: 640px) {
-      .stats-grid {
-        grid-template-columns: repeat(3, 78vw);
-        overflow-x: auto; scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch; scrollbar-width: none;
-        padding-bottom: .5rem;
+      .stats-grid { display: block; overflow: hidden; position: relative; }
+      .stats-track {
+        display: flex;
+        transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        will-change: transform;
       }
-      .stats-grid::-webkit-scrollbar { display: none; }
-      .stat-card { scroll-snap-align: center; }
+      .stats-track .stat-card { min-width: 100%; flex-shrink: 0; }
+      .stats-dots {
+        display: flex; justify-content: center; gap: 6px; margin-top: 1rem;
+      }
+      .stats-dot {
+        width: 6px; height: 6px; border-radius: 50%;
+        background: rgba(237,232,226,.2); transition: background .3s;
+      }
+      .stats-dot.active { background: var(--gold); }
     }
+    @media (min-width: 641px) { .stats-dots { display: none; } }
     .stat-card {
       background: #141210;
       border: 1px solid rgba(237,232,226,.07);
@@ -686,6 +694,11 @@
             <div class="stat-value"><span id="stat2">0</span>%</div>
             <p class="stat-label" data-i18n="stat3label">Faster revenue growth for brands using video marketing</p>
           </div>
+        </div>
+        <div class="stats-dots" id="statsDots">
+          <span class="stats-dot active"></span>
+          <span class="stats-dot"></span>
+          <span class="stats-dot"></span>
         </div>
       </section>
     </div>
@@ -1203,6 +1216,34 @@
       }
     }, { threshold: 0.3 });
     io.observe(section);
+  })();
+
+
+  /* ════════════════════════════════════════════════
+     STATS CAROUSEL — mobile auto-slide
+  ════════════════════════════════════════════════ */
+  (function () {
+    if (window.innerWidth > 640) return;
+    var grid  = document.querySelector('.stats-grid');
+    var dots  = document.querySelectorAll('.stats-dot');
+    if (!grid) return;
+
+    // Wrap cards in a track
+    var track = document.createElement('div');
+    track.className = 'stats-track';
+    while (grid.firstChild) track.appendChild(grid.firstChild);
+    grid.appendChild(track);
+
+    var cards = track.querySelectorAll('.stat-card');
+    var current = 0;
+
+    function goTo(idx) {
+      current = (idx + cards.length) % cards.length;
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      dots.forEach(function (d, i) { d.classList.toggle('active', i === current); });
+    }
+
+    setInterval(function () { goTo(current + 1); }, 3000);
   })();
 
 
