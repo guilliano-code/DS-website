@@ -634,7 +634,7 @@
 
     <!-- ══ GLOBE ═════════════════════════════════════ -->
     <div class="globe-section fade-section" data-delay="0">
-      <h2 class="ftree-h2" data-i18n="globeTitle" style="margin-bottom:1.5rem;text-align:center;">De wereld is van jou, we're just living in it</h2>
+      <h2 class="ftree-h2" data-i18n="globeTitle" style="margin-bottom:1.5rem;text-align:center;">De wereld is van jou,<br>wij leven er gewoon in</h2>
       <div class="globe"></div>
     </div>
 
@@ -1036,7 +1036,7 @@
       successMsg:      "Thanks! We’ll be in touch soon.",
       contactResponse: "Usually responds within 24 hours",
       copiedLabel:     "Copied",
-      globeTitle:      "The world is yours, we're just living in it",
+      globeTitle:      "The world is yours,<br>we're just living in it",
       loginBtn:        "Log in",
       tab1:            "What",
       tab2:            "How",
@@ -1061,7 +1061,7 @@
       successMsg:      "Bedankt! We nemen snel contact op.",
       contactResponse: "Reageert meestal binnen 24 uur",
       copiedLabel:     "Gekopieerd",
-      globeTitle:      "De wereld is van jou, wij leven er gewoon in",
+      globeTitle:      "De wereld is van jou,<br>wij leven er gewoon in",
       loginBtn:        "Inloggen",
       tab1:            "Wat",
       tab2:            "Hoe",
@@ -1077,7 +1077,7 @@
       document.querySelectorAll('[data-i18n]').forEach(function (el) {
         var key = el.dataset.i18n;
         if (t[key] === undefined) return;
-        if (key === 'headline' || key === 'successMsg') el.innerHTML = t[key];
+        if (key === 'headline' || key === 'successMsg' || key === 'globeTitle') el.innerHTML = t[key];
         else el.textContent = t[key];
       });
       document.querySelectorAll('[data-i18n-ph]').forEach(function (el) {
