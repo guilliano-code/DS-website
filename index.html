@@ -333,7 +333,23 @@
     /* ══════════════════════════════════════════════
        RESPONSIVE
     ══════════════════════════════════════════════ */
+    /* ── Language switcher ──────────────────────── */
+    .topbar-right { display: flex; align-items: center; gap: 10px; }
+    .lang-switch {
+      background: none; border: 1px solid rgba(237,232,226,.15);
+      border-radius: 9999px; padding: 6px 14px;
+      display: flex; align-items: center; gap: 5px;
+      cursor: pointer; font-family: 'DM Sans', sans-serif;
+      font-size: 12px; font-weight: 600; letter-spacing: .06em;
+      color: var(--ink); transition: border-color .2s; outline: none;
+    }
+    .lang-switch:hover { border-color: rgba(237,232,226,.3); }
+    .lang-opt { opacity: .32; transition: opacity .2s; }
+    .lang-opt.active { opacity: 1; }
+    .lang-sep { opacity: .2; font-size: 10px; }
+
     @media (max-width: 640px) {
+      .hover-btn { display: none; }
       .hero, .section-wrap,
       .ftree-section { padding-left: 1.5rem; padding-right: 1.5rem; }
       /* cards-section is nested inside section-wrap — zero its own padding so it doesn't double-pad */
@@ -369,22 +385,29 @@
           <img src="Brand_assets/Logo transparant.png" alt="Dailyshotsmedia logo">
           <span class="badge-text">Dailyshotsmedia</span>
         </div>
-        <button class="hover-btn" onclick="window.location.href='https://app.dailyshotsmedia.com/'">
-          <span class="hover-btn__dot"></span>
-          <span class="hover-btn__label">Log in</span>
-          <span class="hover-btn__overlay"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1C1C1A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><polyline points="15 6 21 12 15 18"/></svg></span>
-        </button>
+        <div class="topbar-right">
+          <button class="lang-switch" id="langSwitch" aria-label="Switch language">
+            <span class="lang-opt" id="lo-en">EN</span>
+            <span class="lang-sep">·</span>
+            <span class="lang-opt" id="lo-nl">NL</span>
+          </button>
+          <button class="hover-btn" onclick="window.location.href='https://app.dailyshotsmedia.com/'">
+            <span class="hover-btn__dot"></span>
+            <span class="hover-btn__label" data-i18n="loginBtn">Log in</span>
+            <span class="hover-btn__overlay"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1C1C1A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><polyline points="15 6 21 12 15 18"/></svg></span>
+          </button>
+        </div>
       </div>
 
-      <h1 class="headline fade-section" data-delay="80">Your company's missing<br>a nervous system</h1>
-      <p class="sub fade-section" data-delay="160">Tell me what your company does — we'll show you how bold content can scale it</p>
+      <h1 class="headline fade-section" data-delay="80" data-i18n="headline">Your company's missing<br>a nervous system</h1>
+      <p class="sub fade-section" data-delay="160" data-i18n="sub">Tell me what your company does — we'll show you how bold content can scale it</p>
 
       <!-- CTA Pill — 75% width, send → WhatsApp -->
       <div class="fade-section" data-delay="240">
         <div class="cta-pill-wrap">
           <div class="cta-pill">
             <a href="sms:+31624283207?body=HI%2C%20I%20want%20to%20chat!" class="cta-pill__top">
-              <span class="cta-pill__label">Tell me about your brand…</span>
+              <span class="cta-pill__label" data-i18n="ctaLabel">Tell me about your brand…</span>
               <span class="cta-pill__btn">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0C0B09" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
               </span>
@@ -409,9 +432,9 @@
         <div class="cards-grid">
 
           <div class="card">
-            <div class="card-eyebrow">What We Do</div>
-            <h3 class="card-title">Content that works. Systems that scale.</h3>
-            <p class="card-text">We create stunning short-form video content and build automation systems that actually work. From social clips to full production shoots, we handle the creative side. On the backend, we set up CRM workflows, WhatsApp automations, and lead generation systems that save you time</p>
+            <div class="card-eyebrow" data-i18n="card1eyebrow">What We Do</div>
+            <h3 class="card-title" data-i18n="card1title">Content that works. Systems that scale.</h3>
+            <p class="card-text" data-i18n="card1text">We create stunning short-form video content and build automation systems that actually work. From social clips to full production shoots, we handle the creative side. On the backend, we set up CRM workflows, WhatsApp automations, and lead generation systems that save you time</p>
             <div class="card-tags">
               <span class="card-tag">Short-form Video</span>
               <span class="card-tag">CRM Workflows</span>
@@ -421,9 +444,9 @@
           </div>
 
           <div class="card">
-            <div class="card-eyebrow">How We Do It</div>
-            <h3 class="card-title">We start by listening. Then we explore.</h3>
-            <p class="card-text">We start by understanding your business — your goals, your challenges, your vision. Then we explore what's possible together. Whether it's content that converts or workflows that scale, we're here to figure out the right solution for you, not push what we think you need</p>
+            <div class="card-eyebrow" data-i18n="card2eyebrow">How We Do It</div>
+            <h3 class="card-title" data-i18n="card2title">We start by listening. Then we explore.</h3>
+            <p class="card-text" data-i18n="card2text">We start by understanding your business — your goals, your challenges, your vision. Then we explore what's possible together. Whether it's content that converts or workflows that scale, we're here to figure out the right solution for you, not push what we think you need</p>
             <div class="card-tags">
               <span class="card-tag">Strategy First</span>
               <span class="card-tag">Custom Fit</span>
@@ -446,7 +469,7 @@
       <section class="ftree-section fade-section" data-delay="0">
         <div class="ftree-heading">
           <h2 class="ftree-h2">The Dailyshotsmedia Stack</h2>
-          <p class="ftree-sub">Discover everything we do</p>
+          <p class="ftree-sub" data-i18n="ftreeSub">Discover everything we do</p>
         </div>
         <div class="ftree-wrap">
           <div class="ftree">
@@ -467,14 +490,10 @@
     <div class="contact-section" id="contact">
       <div class="contact-inner">
         <div class="section-line fade-section" data-delay="0"></div>
-        <h2 class="section-h2 fade-section" data-delay="80">Prefer email? Tell us about your goals</h2>
-        <p class="fade-section" data-delay="160" style="font-size:17px;color:#7A736D;margin-bottom:2rem;max-width:380px;line-height:1.65;">
-          Share your vision. We'll be straight with you about whether we're the right fit to help you achieve it
-        </p>
+        <h2 class="section-h2 fade-section" data-delay="80" data-i18n="contactH2">Prefer email? Tell us about your goals</h2>
+        <p class="fade-section" data-delay="160" data-i18n="contactSub" style="font-size:17px;color:#7A736D;margin-bottom:2rem;max-width:380px;line-height:1.65;">Share your vision. We'll be straight with you about whether we're the right fit to help you achieve it</p>
 
-        <div id="fs-success" style="display:none;padding:1rem;background:#15803d;color:#fff;border-radius:8px;margin-bottom:1rem;">
-          Thanks! We'll be in touch soon.
-        </div>
+        <div id="fs-success" data-i18n="successMsg" style="display:none;padding:1rem;background:#15803d;color:#fff;border-radius:8px;margin-bottom:1rem;">Thanks! We'll be in touch soon.</div>
 
         <div id="fs-error" style="display:none;padding:1rem;background:#dc2626;color:#fff;border-radius:8px;margin-bottom:1rem;"></div>
 
@@ -483,26 +502,26 @@
 
           <div>
             <input class="form-field" type="text" id="name" name="name"
-                   required placeholder="Name" />
+                   required placeholder="Name" data-i18n-ph="namePh" />
             <span id="fs-error-name" style="color:#dc2626;font-size:12px;margin-top:4px;display:block;"></span>
           </div>
 
           <div>
             <input class="form-field" type="email" id="email" name="email"
-                   required placeholder="Email address" />
+                   required placeholder="Email address" data-i18n-ph="emailPh" />
             <span id="fs-error-email" style="color:#dc2626;font-size:12px;margin-top:4px;display:block;"></span>
           </div>
 
           <div>
             <textarea class="form-field" id="message" name="message"
-                      required placeholder="What are your main goals?"
+                      required placeholder="What are your main goals?" data-i18n-ph="messagePh"
                       rows="4"></textarea>
             <span id="fs-error-message" style="color:#dc2626;font-size:12px;margin-top:4px;display:block;"></span>
           </div>
 
           <div>
             <button type="submit" class="submit-btn" id="submitBtn">
-              <span id="submitTxt">Send</span>
+              <span id="submitTxt" data-i18n="submitBtn">Send</span>
             </button>
           </div>
         </form>
@@ -517,7 +536,7 @@
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg>
             </span>
           </div>
-          <p class="contact-response">Usually responds within 24 hours</p>
+          <p class="contact-response" data-i18n="contactResponse">Usually responds within 24 hours</p>
         </div>
       </div>
     </div>
@@ -863,6 +882,86 @@
         txt.textContent = 'Send';
       });
     });
+  })();
+
+
+  /* ════════════════════════════════════════════════
+     I18N — Dutch / English language switcher
+  ════════════════════════════════════════════════ */
+  var TRANSLATIONS = {
+    en: {
+      headline:        "Your company's missing<br>a nervous system",
+      sub:             "Tell me what your company does — we'll show you how bold content can scale it",
+      ctaLabel:        "Tell me about your brand…",
+      card1eyebrow:    "What We Do",
+      card1title:      "Content that works. Systems that scale.",
+      card1text:       "We create stunning short-form video content and build automation systems that actually work. From social clips to full production shoots, we handle the creative side. On the backend, we set up CRM workflows, WhatsApp automations, and lead generation systems that save you time",
+      card2eyebrow:    "How We Do It",
+      card2title:      "We start by listening. Then we explore.",
+      card2text:       "We start by understanding your business — your goals, your challenges, your vision. Then we explore what’s possible together. Whether it’s content that converts or workflows that scale, we’re here to figure out the right solution for you, not push what we think you need",
+      ftreeSub:        "Discover everything we do",
+      contactH2:       "Prefer email? Tell us about your goals",
+      contactSub:      "Share your vision. We’ll be straight with you about whether we’re the right fit to help you achieve it",
+      namePh:          "Name",
+      emailPh:         "Email address",
+      messagePh:       "What are your main goals?",
+      submitBtn:       "Send",
+      successMsg:      "Thanks! We’ll be in touch soon.",
+      contactResponse: "Usually responds within 24 hours",
+      loginBtn:        "Log in",
+    },
+    nl: {
+      headline:        "Jouw bedrijf mist<br>een zenuwstelsel",
+      sub:             "Vertel ons wat jouw bedrijf doet — wij laten zien hoe gedurfde content het kan laten groeien",
+      ctaLabel:        "Vertel ons over jouw merk…",
+      card1eyebrow:    "Wat We Doen",
+      card1title:      "Content die werkt. Systemen die schalen.",
+      card1text:       "We maken opvallende short-form videocontent en bouwen automatiseringssystemen die echt werken. Van social clips tot volledige productieshoots — wij verzorgen de creatieve kant. Op de achtergrond zetten we CRM-workflows, WhatsApp-automatiseringen en leadgeneratiesystemen op die jou tijd besparen",
+      card2eyebrow:    "Hoe We Het Doen",
+      card2title:      "We beginnen met luisteren. Dan verkennen we.",
+      card2text:       "We beginnen met het begrijpen van jouw bedrijf — jouw doelen, uitdagingen en visie. Dan verkennen we samen wat er mogelijk is. Of het nu gaat om content die converteert of workflows die schalen, wij zoeken de juiste oplossing voor jou — niet wat wij denken dat je nodig hebt",
+      ftreeSub:        "Ontdek alles wat we doen",
+      contactH2:       "Liever e-mailen? Vertel ons over jouw doelen",
+      contactSub:      "Deel jouw visie. We zijn eerlijk over of wij de juiste match zijn om jou te helpen dit te bereiken",
+      namePh:          "Naam",
+      emailPh:         "E-mailadres",
+      messagePh:       "Wat zijn jouw belangrijkste doelen?",
+      submitBtn:       "Verstuur",
+      successMsg:      "Bedankt! We nemen snel contact op.",
+      contactResponse: "Reageert meestal binnen 24 uur",
+      loginBtn:        "Inloggen",
+    }
+  };
+
+  (function () {
+    var currentLang = 'en';
+
+    function applyLang(lang) {
+      var t = TRANSLATIONS[lang];
+      document.querySelectorAll('[data-i18n]').forEach(function (el) {
+        var key = el.dataset.i18n;
+        if (t[key] === undefined) return;
+        if (key === 'headline' || key === 'successMsg') el.innerHTML = t[key];
+        else el.textContent = t[key];
+      });
+      document.querySelectorAll('[data-i18n-ph]').forEach(function (el) {
+        var key = el.dataset.i18nPh;
+        if (t[key] !== undefined) el.placeholder = t[key];
+      });
+      var loEn = document.getElementById('lo-en');
+      var loNl = document.getElementById('lo-nl');
+      if (loEn) loEn.classList.toggle('active', lang === 'en');
+      if (loNl) loNl.classList.toggle('active', lang === 'nl');
+      localStorage.setItem('dsm-lang', lang);
+      currentLang = lang;
+    }
+
+    var saved    = localStorage.getItem('dsm-lang');
+    var detected = (navigator.language || navigator.userLanguage || '').toLowerCase().startsWith('nl') ? 'nl' : 'en';
+    applyLang(saved || detected);
+
+    var sw = document.getElementById('langSwitch');
+    if (sw) sw.addEventListener('click', function () { applyLang(currentLang === 'en' ? 'nl' : 'en'); });
   })();
 
 
